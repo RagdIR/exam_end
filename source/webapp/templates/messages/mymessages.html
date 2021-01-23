@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
-{% block content %}
+    {% block title %}Написать{% endblock %}
+
+        {% block content %}
+        <h1>Написать сообщение</h1>
+            <p><textarea rows="10" cols="45" name="text"></textarea></p>
+            <p><input type="submit" value="Отправить"></p>
+
+        {% include 'partial/form.html' with action_url=action_url form_method='post' enctype="multipart/form-data" %}
 
 {% endblock %}

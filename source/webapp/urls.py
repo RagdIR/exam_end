@@ -5,6 +5,6 @@ app_name = 'webapp'
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
-    path('<int:pk>/mymessages/', MessageView.as_view(), name='mymessages')
+    path('/mymessages/', MessageView.as_view(), name='mymessages')
 ]
 

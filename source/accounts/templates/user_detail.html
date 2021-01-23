@@ -27,8 +27,14 @@
             <p>
                 <a class="{% if add %}hidden{% endif %} add" href="{% url 'api:add' user.pk %}">Добавить в друзья</a>
                 <a class="{% if not add %}hidden{% endif %} remove" href="{% url 'api:remove' user.pk %}">Удалить из друзей</a>
+                <a class="message" href="{% url 'webapp:mymessages' %}">Написать сообщение</a>
             </p>
+
         {% endif %}
+
+    {% endif %}
+    {% if request.user == user_obj %}
+
     {% endif %}
 
 {% endblock %}
