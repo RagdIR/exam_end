@@ -107,13 +107,6 @@ class UserChangeView(UserPassesTestMixin, UpdateView):
             form_kwargs['files'] = self.request.FILES
         return ProfileChangeForm(**form_kwargs)
 
-        # if self.request.method == 'POST':
-        #     form = ProfileChangeForm(instance=self.object, data=self.request.POST, 
-        #                                 files=self.request.FILES)
-        # else:
-        #     form = ProfileChangeForm(instance=self.object)
-        # return form
-
 
 class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
@@ -131,13 +124,6 @@ class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('accounts:detail', kwargs={'pk': self.object.pk})
-
-
-# class UserPasswordChangeView(PasswordChangeView):
-#     template_name = 'user_password_change.html'
-#
-#     def get_success_url(self):
-#         return reverse('accounts:detail', kwargs={'pk': self.request.user.pk})
 
 
 class UserPasswordResetEmailView(FormView):

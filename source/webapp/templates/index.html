@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Форум</h1>
+
+    {% for user in users %}
+{#        <form method="post" enctype="multipart/form-data">#}
+{#            <div class="box">#}
+{#                <img class="photo" src="{{ photo.photo.url }}" width="550" height="auto" alt="photo">#}
+{#                <h3><a href="{% url "webapp:photo_view" photo.pk %}">{{ photo.sign }}</a></h3>#}
+                <p><a href="{% url 'accounts:detail' user.pk %}"> {{ user }} </a></p>
+{#                <p>Добавлено: {{ photo.created_at|date:"d.m.Y H:i:s" }}</p></p>#}
+{#                {% if perms.webapp.update_photo or photo.author == request.user %}#}
+{#                    <p><a href="{% url 'webapp:photo_update' photo.pk %}">Update</a></p>#}
+{#                {% endif %}#}
+{#                {% if perms.webapp.delete_photo or photo.author == request.user %}#}
+{#                    <p><a href="{% url 'webapp:photo_delete' photo.pk %}">Delete</a></p>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#        </form>#}
+    {% endfor %}
+{% endblock %}
