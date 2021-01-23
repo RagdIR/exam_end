@@ -20,7 +20,7 @@ class Friends(models.Model):
 
 
     def __str__(self):
-        return f'{self.friend.username}'
+        return f'{self.friend}'
 
     class Meta:
         verbose_name = 'Друг'
