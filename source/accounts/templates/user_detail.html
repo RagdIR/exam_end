@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}Пользователь{% endblock %}
 
@@ -14,12 +15,11 @@
     {% if user_obj.profile.avatar %}
         <img class="avatar" src="{{ user_obj.profile.avatar.url }}" width="250" height="250" alt="user picture">
     {% else %}
-        <img class="default" src="https://perila-don.ru/img/no_photo.png" width="250" height="auto" alt="default picture">
+        <img class="default" src="{% static 'avatar.png' %}" width="250" height="auto" alt="default picture">
     {% endif %}
     <p>Имя пользователя: {{ user_obj.username }}</p>
     <p>Имя: {{ user_obj.first_name }}</p>
     <p>Фамилия: {{ user_obj.last_name }}</p>
-    <p>Дата рождения: {{ user_obj.profile.birth_date|date:'d.m.Y' }}</p>
     <p>Почта: {{ user_obj.email }}</p>
 
 {% endblock %}

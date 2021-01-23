@@ -16,3 +16,11 @@ class Friends(models.Model):
 
     user = models.ForeignKey('webapp.Users', on_delete=models.CASCADE,
                                 related_name='friends', verbose_name='Друзья')
+
+
+    def __str__(self):
+        return f'{self.friend.username}'
+
+    class Meta:
+        verbose_name = 'Друг'
+        verbose_name_plural = 'Друзья'
