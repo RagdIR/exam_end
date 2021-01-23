@@ -16,11 +16,13 @@ def get_token_view(request, *args, **kwargs):
         return HttpResponse()
     return HttpResponseNotAllowed('Only GET request are allowed')
 
-class FriendViewSet(LoginRequiredMixin, ViewSet):
+class AddViewSet(LoginRequiredMixin, ViewSet):
+
     queryset = Users.objects.all()
 
     @action(methods=['post'], detail=True)
-    def favor(self, request, pk=None):
+
+    def post(self, request, pk=None):
         user = get_object_or_404(Users, pk=pk)
         add, created = Friends.objects.get_or_create(user=user, friend=request.user)
         if created:
@@ -28,8 +30,11 @@ class FriendViewSet(LoginRequiredMixin, ViewSet):
         else:
             return Response(status=403)
 
+class DellViewSet(LoginRequiredMixin, ViewSet):
+
     @action(methods=['delete'], detail=True)
-    def unfavor(self, request, pk=None):
+
+    def delete(self, request, pk=None):
         user = get_object_or_404(Users, pk=pk)
         add = get_object_or_404(user.friends, user=request.user)
         add.delete()
